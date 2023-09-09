@@ -80,17 +80,27 @@ class DataProcessor:
         """
         ######################################## YOUR CODE HERE ##################################################
         # get generator from data_reader
-        data_reader_gen = #### [YOUR CODE HERE] ####
+        data_reader_gen = (row for row in self.data_reader)
 
         # skip first row as it is the column name
         _ = next(data_reader_gen)
 
         # initialize aggreate value
-        aggregate = #### [YOUR CODE HERE] ####
+        aggregate = 0
 
         for row in tqdm(data_reader_gen):
             if self.to_float(row[column_name]):
-                aggregate += #### [YOUR CODE HERE] ####
+                aggregate += self.to_float(row[column_name])
 
         return aggregate
         ######################################## YOUR CODE HERE ##################################################
+
+if __name__ == '__main__':
+
+    #fp = 'workspaces/uplimit_intermediate_python/data/tst/2015.csv'
+    fp = '../data/tst/2015.csv'
+    dp = DataProcessor(fp)
+    
+    result = dp.aggregate('TotalPrice')
+    print(result)
+    
