@@ -42,9 +42,10 @@ async def get() -> Dict:
     """
 
     ######################################## YOUR CODE HERE ##################################################
+    
+    return {"status": "ok"}
 
     ######################################## YOUR CODE HERE ##################################################
-
 
 # Below endpoint renders an HTML page
 @app.get("/")
@@ -53,6 +54,12 @@ async def get() -> HTMLResponse:
     should render the HTML file - index.html when a user goes to http://127.0.0.1:8000/
     """
     ######################################## YOUR CODE HERE ##################################################
+
+    with open('index.html', 'r') as f:
+        html = f.read()
+    
+    # Render an HTML page
+    return HTMLResponse(html)
 
     ######################################## YOUR CODE HERE ##################################################
 

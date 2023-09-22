@@ -44,9 +44,18 @@ class DB:
 
         Read more about datatypes in Sqlite here -> https://www.sqlite.org/datatype3.html
         """
-    ######################################## YOUR CODE HERE ##################################################
+    #   ####################################### YOUR CODE HERE ##################################################
 
-    ######################################## YOUR CODE HERE ##################################################
+        self._connection.execute(f'''CREATE TABLE IF NOT EXISTS {self._table_name} (
+                                 process_id TEXT NOT NULL,
+                                 file_name TEXT NULL,
+                                 file_path TEXT NULL,
+                                 description TEXT NULL,
+                                 start_time TEXT NOT NULL,
+                                 end_time TEXT NULL,
+                                 percentage REAL NULL)''')
+                                 
+        ######################################## YOUR CODE HERE ##################################################
 
     def insert(self, process_id, start_time, file_name=None, file_path=None,
                description=None, end_time=None, percentage=None) -> None:
@@ -62,9 +71,11 @@ class DB:
         :param percentage: Percentage of process completed
         :return: None
         """
-    ######################################## YOUR CODE HERE ##################################################
+        ######################################## YOUR CODE HERE ##################################################
 
-    ######################################## YOUR CODE HERE ##################################################
+        self._connection.execute()
+
+        ######################################## YOUR CODE HERE ##################################################
 
     def read_all(self) -> List[Dict]:
         data = []
