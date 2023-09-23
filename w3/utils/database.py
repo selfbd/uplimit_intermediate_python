@@ -73,7 +73,21 @@ class DB:
         """
         ######################################## YOUR CODE HERE ##################################################
 
-        self._connection.execute()
+        self._connection.execute(f'''INSERT INTO {self._table_name}
+                                (process_id,
+                                 start_time,
+                                 file_name,
+                                 file_path,
+                                 description,
+                                 end_time,
+                                 percentage) VALUES (?, ?), (
+                                 {process_id},
+                                 {start_time},
+                                 {file_name},
+                                 {file_path},
+                                 {description},
+                                 {end_time},
+                                 {percentage})''')
 
         ######################################## YOUR CODE HERE ##################################################
 
@@ -105,8 +119,13 @@ class DB:
         :param percentage: Percentage of process completed
         :return: None
         """
-    ######################################## YOUR CODE HERE ##################################################
+        ######################################## YOUR CODE HERE ##################################################
 
-    ######################################## YOUR CODE HERE ##################################################
+        self._connection.execute(f'''UPDATE {self._table_name} SET percentage='{percentage}'
+                                     WHERE process_id='{process_id}';''')
+
+        self._connection.commit()
+
+        ######################################## YOUR CODE HERE ##################################################
 
 
