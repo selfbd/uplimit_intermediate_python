@@ -72,4 +72,10 @@ async def get() -> List[ProcessStatus]:
     """
     ######################################## YOUR CODE HERE ##################################################
 
+    db = DB()
+
+    processes = db.read_all()
+
+    return [ProcessStatus(**process) for process in processes]
+
     ######################################## YOUR CODE HERE ##################################################

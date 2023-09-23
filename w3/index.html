@@ -41,7 +41,8 @@
             var url = new URL(urlString);
 
             // Make a websocket connection
-            var ws = new WebSocket(`ws://localhost:8000/ws`);
+            // var ws = new WebSocket(`ws://localhost:8000/ws`);
+            var ws = new WebSocket(`wss://shiny-invention-wr97wgvr5jx2gw-8000.app.github.dev/ws`);
 
             // On receiving a message, append it to the unordered list `messages`
             function processMessage(event) {

@@ -48,12 +48,14 @@ class DB:
 
         self._connection.execute(f'''CREATE TABLE IF NOT EXISTS {self._table_name} (
                                  process_id TEXT NOT NULL,
-                                 file_name TEXT NULL,
-                                 file_path TEXT NULL,
-                                 description TEXT NULL,
-                                 start_time TEXT NOT NULL,
-                                 end_time TEXT NULL,
-                                 percentage REAL NULL)''')
+                                 file_name TEXT DEFAULT NULL,
+                                 file_path TEXT DEFAULT NULL,
+                                 description TEXT DEFAULT NULL,
+                                 start_time TEXT DEFAULT NULL,
+                                 end_time TEXT DEFAULT NULL,
+                                 percentage REAL DEFAULT NULL)''')
+        
+        self._connection.commit()
                                  
         ######################################## YOUR CODE HERE ##################################################
 
@@ -73,21 +75,26 @@ class DB:
         """
         ######################################## YOUR CODE HERE ##################################################
 
-        self._connection.execute(f'''INSERT INTO {self._table_name}
-                                (process_id,
+        values = [
+            process_id,
+            start_time,
+            file_name,
+            file_path,
+            description,
+            end_time,
+            percentage]
+
+        self._connection.execute(f'''INSERT INTO {self._table_name} (
+                                 process_id,
                                  start_time,
                                  file_name,
                                  file_path,
                                  description,
                                  end_time,
-                                 percentage) VALUES (?, ?), (
-                                 {process_id},
-                                 {start_time},
-                                 {file_name},
-                                 {file_path},
-                                 {description},
-                                 {end_time},
-                                 {percentage})''')
+                                 percentage)
+                                 VALUES (?, ?, ?, ?, ?, ?, ?)''', values)
+
+        self._connection.commit()
 
         ######################################## YOUR CODE HERE ##################################################
 
