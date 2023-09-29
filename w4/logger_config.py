@@ -20,15 +20,18 @@ class Logger:
         # Create formatters and add it to handlers
         ######################################## YOUR CODE HERE ##################################################
         # set the logging formatter to the f_handler
+        self.logger.addHandler(self.f_handler)
         ######################################## YOUR CODE HERE ##################################################
 
         ######################################## YOUR CODE HERE ##################################################
         # Add handlers to the logger and setlevel to DEBUG
+        self.logger.setLevel(logging.DEBUG)
         ######################################## YOUR CODE HERE ##################################################
 
     def warning(self, msg):
-        pass
+        #pass
         ######################################## YOUR CODE HERE ##################################################
+        self.logger.debug(msg)
         ######################################## YOUR CODE HERE ##################################################
 
     def error(self, msg):
