@@ -50,7 +50,6 @@ class Logger:
         self.debug(msg)
         ######################################## YOUR CODE HERE ##################################################
 
-logging.getLogger().setLevel(logging.DEBUG)
 server_logger = Logger(log_file_name='server_logs.txt', module_name='server_logs')
 main_logger = Logger(log_file_name='main_logs.txt', module_name='main_logs')
 
